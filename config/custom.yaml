@@ -23,6 +23,7 @@ source:
 
 executor:
   debug: ${oc.env:DEBUG,null}
-  source:
-    - arxiv
-  reranker: local 
+  send_empty: false
+  max_paper_num: 100
+  source: ["arxiv"]
+  reranker: local
