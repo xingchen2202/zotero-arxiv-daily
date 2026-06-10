@@ -25,3 +25,4 @@ executor:
   debug: ${oc.env:DEBUG,null}
   source:
     - arxiv
+  reranker: local 
