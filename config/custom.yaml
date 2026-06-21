@@ -1,7 +1,7 @@
 zotero:
   user_id: ${oc.env:ZOTERO_ID}
   api_key: ${oc.env:ZOTERO_KEY}
-  include_path: ["transition-metal-compounds-Daniel I. Khomskii/**","triangular/**"]
+  include_path: ["transition-metal-compounds-Daniel I. Khomskii/**","triangular/**","surface-magnetism/**","DCA/**"]
 
 email:
   sender: ${oc.env:SENDER}
@@ -19,7 +19,7 @@ llm:
 
 source:
   arxiv:
-    category: ["cond-mat.str-el","cond-mat.mes-hall","cond-mat.supr-con"]
+    category: ["cond-mat.str-el","cond-mat.mes-hall","cond-mat.supr-con","cond-mat.mtrl-sci"]
 
 executor:
   debug: ${oc.env:DEBUG,null}
