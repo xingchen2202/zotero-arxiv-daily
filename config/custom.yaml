@@ -1,7 +1,8 @@
 zotero:
   user_id: ${oc.env:ZOTERO_ID}
   api_key: ${oc.env:ZOTERO_KEY}
-  include_path: ["transition-metal-compounds-Daniel I. Khomskii/**","triangular/**","surface-magnetism/**","DCA/**"]
+  include_path:
+    - "TbMn6Sn6-Hastatic/**"
 
 email:
   sender: ${oc.env:SENDER}
@@ -14,16 +15,25 @@ llm:
   api:
     key: ${oc.env:OPENAI_API_KEY}
     base_url: ${oc.env:OPENAI_API_BASE}
+
   generation_kwargs:
     model: deepseek-chat
+    max_tokens: 8192
+
+  language: Chinese
 
 source:
   arxiv:
-    category: ["cond-mat.str-el","cond-mat.mes-hall","cond-mat.supr-con","cond-mat.mtrl-sci"]
+    category:
+      - "cond-mat.str-el"
+      - "cond-mat.mtrl-sci"
+      - "cond-mat.mes-hall"
+    include_cross_list: true
 
 executor:
   debug: ${oc.env:DEBUG,null}
   send_empty: false
-  max_paper_num: 100
-  source: ["arxiv"]
+  max_paper_num: 20
+  source:
+    - "arxiv"
   reranker: local
