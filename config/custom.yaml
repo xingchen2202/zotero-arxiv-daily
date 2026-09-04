@@ -2,7 +2,7 @@ zotero:
   user_id: ${oc.env:ZOTERO_ID}
   api_key: ${oc.env:ZOTERO_KEY}
   include_path:
-    - "TbMn6Sn6-Hastatic/**"
+    - "the_heavy_fermion/**"
 
 email:
   sender: ${oc.env:SENDER}
