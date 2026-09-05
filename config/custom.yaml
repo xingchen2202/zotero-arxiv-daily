@@ -2,6 +2,7 @@ zotero:
   user_id: ${oc.env:ZOTERO_ID}
   api_key: ${oc.env:ZOTERO_KEY}
   include_path:
+    - "the_heavy_fermion"
     - "the_heavy_fermion/**"
 
 email:
