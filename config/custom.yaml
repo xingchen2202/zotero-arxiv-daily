@@ -2,8 +2,8 @@ zotero:
   user_id: ${oc.env:ZOTERO_ID}
   api_key: ${oc.env:ZOTERO_KEY}
   include_path:
-    - "TbMnSn"
-    - "TbMnSn/**"
+    - "Research"
+    - "Research/**"
 
 email:
   sender: ${oc.env:SENDER}
