@@ -84,7 +84,7 @@ class Executor:
                 )
             ]
         if self.include_path_patterns or self.ignore_path_patterns:
-            samples = random.sample(corpus, min(5, len(corpus)))
+            samples = corpus
             samples = '\n'.join([c.title + ' - ' + '\n'.join(c.paths) for c in samples])
             logger.info(f"Selected {len(corpus)} zotero papers:\n{samples}\n...")
         return corpus
