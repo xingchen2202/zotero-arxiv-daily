@@ -1,4 +1,5 @@
 import tarfile
+import os
 import re
 import glob
 import math
@@ -153,7 +154,16 @@ def send_email(config:DictConfig, html:str):
     msg['From'] = _format_addr('Github Action <%s>' % sender)
     msg['To'] = _format_addr('You <%s>' % receiver)
     today = datetime.datetime.now().strftime('%Y/%m/%d')
-    msg['Subject'] = Header(f'Daily arXiv {today}', 'utf-8').encode()
+    event = os.environ.get('GITHUB_EVENT_NAME', '')
+    is_formal = os.environ.get('GITHUB_ACTIONS') == 'true' and event == 'schedule' and not config.executor.debug
+    prefix = '' if is_formal else '[TEST] '
+    msg['Subject'] = Header(f'{prefix}Daily arXiv {today}', 'utf-8').encode()
+    msg['X-Daily-Source'] = 'github-actions' if os.environ.get('GITHUB_ACTIONS') == 'true' else 'local'
+    msg['X-Daily-Mode'] = 'scheduled' if is_formal else 'test'
+    msg['X-Daily-Repository'] = os.environ.get('GITHUB_REPOSITORY', '')
+    msg['X-Daily-Workflow'] = os.environ.get('GITHUB_WORKFLOW', '')
+    msg['X-Daily-Run-ID'] = os.environ.get('GITHUB_RUN_ID', '')
+    msg['X-Daily-Run-Attempt'] = os.environ.get('GITHUB_RUN_ATTEMPT', '')
 
     try:
         server = smtplib.SMTP(smtp_server, smtp_port)
