@@ -29,6 +29,7 @@ source:
       - "cond-mat.str-el"
       - "cond-mat.mtrl-sci"
       - "cond-mat.mes-hall"
+      - "cond-mat.supr-con"
     include_cross_list: true
 
 executor:
